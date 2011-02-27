@@ -10,6 +10,7 @@
 
     <target name="clean" description="Remove old build artifacts">
         <delete dir="${build.dir}" />
+    	<delete dir="${results.dir}" />
     </target>
 
     <target name="compile">
@@ -24,6 +25,11 @@
                target="1.5"
                includeantruntime="no"
         />
+    	
+        <copy todir="${build.dir}">
+            <fileset dir="${specs.dir}" />
+        </copy>
+
     </target>
 
     <target name="run.tests" depends="compile">
