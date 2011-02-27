@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -48,13 +49,13 @@ public class TriangleTest {
 	public static class TrianglePage {
 
 		@FindBy(id = "triangle_side1")
-		private WebElement side1;
+		private WebElement side1Element;
 
 		@FindBy(id = "triangle_side2")
-		private WebElement side2;
+		private WebElement side2Element;
 
 		@FindBy(id = "triangle_side3")
-		private WebElement side3;
+		private WebElement side3Element;
 
 		@FindBy(id = "triangle_type")
 		private WebElement triangleType;
@@ -65,13 +66,12 @@ public class TriangleTest {
 			this.driver = driver;
 		}
 
-		public void enterSideLengths(String side1, String side2, String side3)
+		public void enterSideLengths(String side1length, String side2length, String side3length)
 				throws Exception {
-			enterValueToElement(this.side1, side1);
-			enterValueToElement(this.side2, side2);
-			enterValueToElement(this.side3, side3);
-			this.side1.submit();
-			waitUntilNewResultAppears(side1, side2, side3);
+			enterValueToElement(side1Element, side1length);
+			enterValueToElement(side2Element, side2length);
+			enterValueToElement(side3Element, side3length);
+			waitUntilNewResultAppears(side1length, side2length, side3length);
 		}
 
 		private void waitUntilNewResultAppears(String side1, String side2,
@@ -91,7 +91,7 @@ public class TriangleTest {
 
 		private void enterValueToElement(WebElement element, String value) {
 			element.clear();
-			element.sendKeys(value);
+			element.sendKeys(value, Keys.ENTER);
 		}
 
 		public String triangleType() {
