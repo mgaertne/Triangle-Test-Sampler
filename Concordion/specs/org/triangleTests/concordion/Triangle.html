@@ -12,36 +12,65 @@
 
 <h3>Examples</h3>
 
-<table concordion:execute="#type = triangleFor(#side1, #side2, #side3)">
+<table concordion:execute="#triangle = triangleFor(#side1, #side2, #side3)">
 	<tr>
 		<th concordion:set="#side1">Side #1</th>
 		<th concordion:set="#side2">Side #2</th>
 		<th concordion:set="#side3">Side #3</th>
-		<th concordion:assertEquals="#type">Triangle Type</th>
+		<th concordion:assertEquals="#triangle.triangleType()">Triangle Type</th>
+		<th concordion:assertEquals="#triangle.coordinatesAreValid()">Drawn inside canvas</th>
 	</tr>
 	<tr>
 		<td>1</td>
 		<td>1</td>
 		<td>1</td>
 		<td>Equilateral</td>
+		<td>true</td>
 	</tr>
 	<tr>
 		<td>3</td>
 		<td>4</td>
 		<td>5</td>
 		<td>Right</td>
+		<td>true</td>
 	</tr>
 	<tr>
 		<td>4</td>
 		<td>4</td>
 		<td>5</td>
 		<td>Isosceles</td>
+		<td>true</td>
 	</tr>
 	<tr>
 		<td>4</td>
 		<td>5</td>
 		<td>6</td>
 		<td>Scalene</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>2</td>
+		<td>5</td>
+		<td>6</td>
+		<td>Scalene</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>4.2</td>
+		<td>5.6</td>
+		<td>6.1</td>
+		<td>Scalene</td>
+		<td>true</td>
+	</tr>
+</table>
+
+
+<table concordion:execute="#triangle = triangleFor(#side1, #side2, #side3)">
+	<tr>
+		<th concordion:set="#side1">Side #1</th>
+		<th concordion:set="#side2">Side #2</th>
+		<th concordion:set="#side3">Side #3</th>
+		<th concordion:assertEquals="#triangle.triangleType()">Triangle Type</th>
 	</tr>
 	<tr>
 		<td>0</td>

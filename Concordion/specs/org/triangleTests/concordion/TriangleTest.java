@@ -1,5 +1,8 @@
 package org.triangleTests.concordion;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.concordion.integration.junit4.ConcordionRunner;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -40,13 +43,18 @@ public class TriangleTest {
 		driver.close();
 	}
 
-	public String triangleFor(String side1, String side2, String side3)
+	public TrianglePage triangleFor(String side1, String side2, String side3)
 			throws Exception {
 		page.enterSideLengths(side1, side2, side3);
-		return page.triangleType();
+		return page;
 	}
 
 	public static class TrianglePage {
+
+		private Pattern digitPattern = Pattern.compile("^\\d.*$");
+
+		private Pattern coordinatePattern = Pattern
+				.compile("(-*[0-9]+),(-*[0-9]+)\\) \\((-*[0-9]+),(-*[0-9]+)\\) \\((-*[0-9]+),(-*[0-9]+)");
 
 		@FindBy(id = "triangle_side1")
 		private WebElement side1Element;
@@ -66,14 +74,22 @@ public class TriangleTest {
 			this.driver = driver;
 		}
 
-		public void enterSideLengths(String side1length, String side2length, String side3length)
-				throws Exception {
-			enterValueToElement(side1Element, side1length);
-			enterValueToElement(side2Element, side2length);
-			enterValueToElement(side3Element, side3length);
-			waitUntilNewResultAppears(side1length, side2length, side3length);
+		public void enterSideLengths(String side1, String side2, String side3) throws Exception {
+			enterValueToElement(side1Element, side1);
+			enterValueToElement(side2Element, side2);
+			enterValueToElement(side3Element, side3);
+			waitUntilNewResultAppears(side1, side2, side3);
 		}
 
+		private void enterValueToElement(WebElement element, String value) {
+			element.clear();
+			element.sendKeys(value, Keys.ENTER);
+		}
+
+		public String triangleType() {
+			return triangleType.getText();
+		}
+		
 		private void waitUntilNewResultAppears(String side1, String side2,
 				String side3) throws Exception {
 			long pollIntervall = 500;
@@ -88,14 +104,39 @@ public class TriangleTest {
 				foundElements = driver.findElements(By.xpath(xpath)).size();
 			}
 		}
-
-		private void enterValueToElement(WebElement element, String value) {
-			element.clear();
-			element.sendKeys(value, Keys.ENTER);
+		
+		private String coordinates() {
+			return driver
+					.findElement(
+							By.xpath("//div[@id='triangles_list']/div[contains(@class, 'triangle_row')][1]/div[contains(@class, 'triangle_data_cell')][5]"))
+					.getText();
 		}
 
-		public String triangleType() {
-			return triangleType.getText();
+		public boolean coordinatesAreValid() {
+			String coordinates = coordinates();
+
+			Matcher matcher = matchCoordinates(coordinates);
+
+			if (!matcher.find())
+				throw new IllegalArgumentException("coordinate row not found");
+
+			for (int matchCount = 1; matchCount <= matcher.groupCount(); matchCount++) {
+				String singleMatch = matcher.group(matchCount);
+				if (!isPositiveDigit(singleMatch))
+					throw new RuntimeException(String.format("negative coordinate found in '%s'", coordinates));
+				if (Double.parseDouble(singleMatch) > 200.0)
+					throw new RuntimeException(String.format("too large (> 200) coordinate found in '%s'", coordinates));
+			}
+			return true;
+		}
+
+		private Matcher matchCoordinates(String coordinates) {
+			Matcher matcher = coordinatePattern.matcher(coordinates);
+			return matcher;
+		}
+
+		private boolean isPositiveDigit(String singleMatch) {
+			return digitPattern.matcher(singleMatch).find();
 		}
 	}
 }
