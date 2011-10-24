@@ -1,4 +1,4 @@
-<project xmlns:ivy="antlib:org.apache.ivy.ant" name="HelloCucumber"
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="Triangle Test Sampler Cuke4Duke"
   default="cucumber" basedir=".">
   <property name="jruby.home" value="${basedir}/lib/.jruby"/>
 
