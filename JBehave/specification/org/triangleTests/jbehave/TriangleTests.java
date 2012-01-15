@@ -1,10 +1,16 @@
 package org.triangleTests.jbehave;
 
-import org.jbehave.scenario.Scenario;
+import java.util.List;
 
-public class TriangleTests extends Scenario {
+import org.jbehave.core.junit.JUnitStory;
+import org.jbehave.core.steps.CandidateSteps;
+import org.jbehave.core.steps.InstanceStepsFactory;
 
-	public TriangleTests() {
-		addSteps(new TriangleTestSteps());
+public class TriangleTests extends JUnitStory {
+
+	@Override
+	public List<CandidateSteps> candidateSteps() {
+		return new InstanceStepsFactory(configuration(),
+				new TriangleTestSteps()).createCandidateSteps();
 	}
 }

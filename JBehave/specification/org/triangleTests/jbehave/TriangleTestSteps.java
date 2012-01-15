@@ -3,18 +3,18 @@ package org.triangleTests.jbehave;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
-import org.jbehave.scenario.annotations.AfterStory;
-import org.jbehave.scenario.annotations.BeforeScenario;
-import org.jbehave.scenario.annotations.BeforeStory;
-import org.jbehave.scenario.annotations.Named;
-import org.jbehave.scenario.annotations.Then;
-import org.jbehave.scenario.annotations.When;
-import org.jbehave.scenario.steps.Steps;
+import org.jbehave.core.annotations.AfterStory;
+import org.jbehave.core.annotations.BeforeScenario;
+import org.jbehave.core.annotations.BeforeStory;
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.Then;
+import org.jbehave.core.annotations.When;
+import org.jbehave.core.embedder.Embedder;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public class TriangleTestSteps extends Steps {
+public class TriangleTestSteps extends Embedder {
 
 	private static WebDriver driver;
 	private TrianglePage trianglePage;
