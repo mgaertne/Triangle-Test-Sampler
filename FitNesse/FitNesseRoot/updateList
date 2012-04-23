@@ -21,6 +21,13 @@ FitNesseRoot/files/images/unrun.png
 FitNesseRoot/files/images/virtualPage.jpg
 FitNesseRoot/files/css/fitnesse_base.css
 FitNesseRoot/files/css/jquery.autocomplete.css
+FitNesseRoot/files/javascript/jsunit/app/jsUnitCore.js
+FitNesseRoot/files/javascript/jsunit/app/jsUnitMockTimeout.js
+FitNesseRoot/files/javascript/jsunit/app/jsUnitTestManager.js
+FitNesseRoot/files/javascript/jsunit/app/jsUnitTestSuite.js
+FitNesseRoot/files/javascript/jsunit/app/jsUnitTracer.js
+FitNesseRoot/files/javascript/jsunit/app/jsUnitVersionCheck.js
+FitNesseRoot/files/javascript/jsunit/app/xbDebug.js
 FitNesseRoot/files/javascript/SpreadsheetTranslator.js
 FitNesseRoot/files/javascript/WikiFormatter.js
 FitNesseRoot/files/javascript/clientSideSort.js
@@ -802,8 +809,6 @@ FitNesseRoot/FitNesse/UserGuide/DataTypesInFixtures/properties.xml
 FitNesseRoot/FitNesse/UserGuide/DebuggingFitNesseTables/content.txt
 FitNesseRoot/FitNesse/UserGuide/DebuggingFitNesseTables/properties.xml
 FitNesseRoot/FitNesse/UserGuide/DebugingFixtureCode/content.txt
-FitNesseRoot/FitNesse/UserGuide/DebugingFixtureCode/content.txt.orig
-FitNesseRoot/FitNesse/UserGuide/DebugingFixtureCode/content.txt.rej
 FitNesseRoot/FitNesse/UserGuide/DebugingFixtureCode/properties.xml
 FitNesseRoot/FitNesse/UserGuide/DeliveringTheRightSystem/content.txt
 FitNesseRoot/FitNesse/UserGuide/DeliveringTheRightSystem/properties.xml
