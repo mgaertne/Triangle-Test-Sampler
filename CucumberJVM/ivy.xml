@@ -1,0 +1,17 @@
+<ivy-module version="2.0">
+  <info organisation="cukes.info" module="java-example"/>
+  <dependencies>
+    <dependency org="info.cukes" name="cucumber-core" rev="1.0.3"/>
+    <dependency org="info.cukes" name="cucumber-java" rev="1.0.3"/>
+    <dependency org="info.cukes" name="gherkin" rev="2.9.3"/>
+    <dependency org="org.picocontainer" name="picocontainer" rev="2.10.2"/>
+    <dependency org="junit" name="junit" rev="4.10"/>
+    
+    <dependency org="org.seleniumhq.selenium" name="selenium-java" rev="2.21.0" />
+    <dependency org="org.seleniumhq.selenium" name="selenium-api" rev="2.21.0" />
+    <dependency org="org.seleniumhq.selenium" name="selenium-server" rev="2.21.0" />
+    <dependency org="org.seleniumhq.selenium" name="selenium-remote-driver" rev="2.21.0" />
+    <dependency org="org.seleniumhq.selenium" name="selenium-support" rev="2.21.0" />
+    <dependency org="org.seleniumhq.selenium" name="selenium-firefox-driver" rev="2.21.0" />
+  </dependencies>
+</ivy-module>
