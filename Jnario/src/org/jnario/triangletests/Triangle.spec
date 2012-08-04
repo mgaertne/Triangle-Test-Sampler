@@ -13,8 +13,6 @@ describe "Triangle"{
 		trianglePage = PageFactory::initElements(driver, typeof(TrianglePage))
 	}
 	
-
-	
 	def valid_examples{
 	  | side1 | side2 | side3 | triangle_type |
       | 1 | 1 | 1 | "Equilateral" |
