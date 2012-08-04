@@ -29,22 +29,20 @@ Scenario: Draws scalene triangle
 	Then triangle displays "Scalene" as the triangle type
 	    And draws the triangle inside the canvas
 
-Scenario: Draws scalene triangle
-	When  I enter the following side length
-	'''
-	  | side1 | side2 | side3 | triangle_type |
-      | 1 | 1 | 1 | Equilateral |
-      | 3 | 4 | 5 | Right |
-      | 4 | 5 | 6 | Scalene |
-      | 2 | 5 | 6 | Scalene |
-      | 4.2 | 5.6 | 6.1 | Scalene |
-	'''
-	val lines = args.first.split("\n")
-	lines.forEach[
-		val values = split("|").map[trim]
-		
-	]
-	
+Scenario: Draws another scalene triangle
+	When  I enter "2", "5", "6" as side lengths
 	Then triangle displays "Scalene" as the triangle type
 	    And draws the triangle inside the canvas
-	    
+
+Scenario: Draws a scalene triangle with floating point values
+	When  I enter "4.2", "5.6", "6.1" as side lengths
+	Then triangle displays "Scalene" as the triangle type
+	    And draws the triangle inside the canvas
+
+Scenario: Notices an invalid triangle with zero side length
+	When  I enter "0", "4", "5" as side lengths
+	Then triangle displays "Invalid" as the triangle type
+
+Scenario: Notices an invalid triangle with invliad side lengths
+	When  I enter "1", "4", "6" as side lengths
+	Then triangle displays "Invalid" as the triangle type

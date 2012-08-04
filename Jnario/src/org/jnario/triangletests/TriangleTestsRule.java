@@ -21,9 +21,9 @@ public class TriangleTestsRule implements TestRule {
 				driver = new FirefoxDriver();
 				driver.get("http://practice.agilistry.com/triangle");
 				trianglePage = PageFactory.initElements(driver, TrianglePage.class);
-				System.out.println("setup");
+
 				base.evaluate();
-				System.out.println("teardown");
+
 				driver.close();
 				driver.quit();
 			}
