@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import cucumber.annotation.After;
-import cucumber.annotation.en.Then;
-import cucumber.annotation.en.When;
+import cucumber.api.java.After;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class TriangleStepdefs {
 

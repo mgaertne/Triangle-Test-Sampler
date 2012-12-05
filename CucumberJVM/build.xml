@@ -8,7 +8,7 @@
 	<target name="cucumber" depends="-compile-steps" description="Run Cucumber">
 		<mkdir dir="target/junit-report" />
 
-		<java classname="cucumber.cli.Main" fork="true" failonerror="false" resultproperty="cucumber.exitstatus">
+		<java classname="cucumber.api.cli.Main" fork="true" failonerror="false" resultproperty="cucumber.exitstatus">
 			<classpath>
 				<path refid="compile.classpath" />
 				<pathelement location="target/test-classes" />
